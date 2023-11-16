@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/js/Pages/Public/Index.vue'                    => resource_path('js/Pages/Public/Index.vue'),
             __DIR__ . '/../../resources/js/Pages/Dashboard/Index.vue'                 => resource_path('js/Pages/Dashboard/Index.vue'),
 
-            __DIR__ . '/../../resources/js/app.js'                                    => resource_path('js/app.js'),
+            __DIR__ . '/../../resources/js/app.js.php'                                => resource_path('js/app.js'),
             __DIR__ . '/../../vite.config.js'                                         => base_path('vite.config.js'),
 
             __DIR__ . '/../../resources/views/auth/nav/dashboard.blade.php'           => resource_path('views/auth/nav/dashboard.blade.php'),
