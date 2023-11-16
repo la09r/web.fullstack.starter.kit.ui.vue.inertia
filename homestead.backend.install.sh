@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 # exec into Homestead
 
+# set .env
+
 rm -f ./README.md
 
 git init && git add . && git commit -m 'init'
@@ -23,7 +25,15 @@ php artisan inertia:middleware
 
 git add . && git commit -m 'init inertia & ziggy'
 
-# set .env
+php artisan migrate
 
+composer require la09r/web-fullstack-starter-kit-ui-vue-inertia:10.0.2
 
+php artisan vendor:publish --provider="LA09R\StarterKit\UI\Vue\Inertia\App\Providers\AppServiceProvider" --force
+
+git add . && git commit -m 'publish package'
+
+# php artisan tinker
+# User::factory()->create()
+# login = email field from tinker output, password = password
 
