@@ -11,6 +11,11 @@
 |
 */
 
-Auth::routes();
+Auth::routes([
+    'register'  => false,
+    'reset'     => false,
+    'confirm'   => false,
+    'verify'    => false,
+]);
 
 LA09R\StarterKit\UI\Vue\Inertia\App\Router::routes();

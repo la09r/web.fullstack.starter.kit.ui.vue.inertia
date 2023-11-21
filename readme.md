@@ -28,6 +28,18 @@
   - copy **homestead.backend..sh** files to `DOCUMENT_ROOT`
   - update **+x** permission for ***.sh** files,
   - exec `homestead.backend.install.sh`
+  - in `app/Http/Kernel.php` add to `protected $middleware array`:
+    ```
+    \LA09R\StarterKit\UI\Vue\Inertia\App\Http\Middleware\HandleInertiaRequests::class,
+    ```
+    in `config/app.php` add to `providers`:
+    ```
+    LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class,
+    ```
+    in `config/app.php` add to `aliases`:
+    ```
+    App\Providers\RouteServiceProvider::class => LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class
+    ```
   - `php artisan tinker`
   - `User::factory()->create()`, save: **login** = `email` field from tinker output, **password** = `password`
 

@@ -24,18 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/starter_kit_ui_vue_inertia.php'                  => config_path('starter_kit_ui_vue_inertia.php'),
-            __DIR__ . '/../../routes/web.php'                                         => base_path('routes/web.php'),
-
-            __DIR__ . '/../../app/Http/Controllers/Auth/ForgotPasswordController.php' => app_path('Http/Controllers/Auth/ForgotPasswordController.php'),
-            __DIR__ . '/../../app/Http/Controllers/Auth/RegisterController.php'       => app_path('Http/Controllers/Auth/RegisterController.php'),
-            __DIR__ . '/../../app/Http/Controllers/Auth/ResetPasswordController.php'  => app_path('Http/Controllers/Auth/ResetPasswordController.php'),
-
-            __DIR__ . '/../../app/Http/Middleware/HandleInertiaRequests.php'          => app_path('Http/Middleware/HandleInertiaRequests.php'),
-            __DIR__ . '/../../app/Http/Kernel.php'                                    => app_path('Http/Kernel.php'),
-
-            __DIR__ . '/../../app/Providers/RouteServiceProvider.php'                 => app_path('Providers/RouteServiceProvider.php'),
-
             __DIR__ . '/../../resources/js/components/Dashboard/Nav.vue'              => resource_path('js/components/Dashboard/Nav.vue'),
 
             __DIR__ . '/../../resources/js/Layouts/CardLayout.vue'                    => resource_path('js/Layouts/CardLayout.vue'),
@@ -43,7 +31,6 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/js/Pages/Public/Index.vue'                    => resource_path('js/Pages/Public/Index.vue'),
             __DIR__ . '/../../resources/js/Pages/Dashboard/Index.vue'                 => resource_path('js/Pages/Dashboard/Index.vue'),
 
-            __DIR__ . '/../../resources/js/app.js.php'                                => resource_path('js/app.js'),
             __DIR__ . '/../../vite.config.js.php'                                     => base_path('vite.config.js'),
 
             __DIR__ . '/../../resources/views/auth/nav/dashboard.blade.php'           => resource_path('views/auth/nav/dashboard.blade.php'),

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace LA09R\StarterKit\UI\Vue\Inertia\App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+                ->group(base_path('vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/routes/web.php'));
         });
     }
 }
