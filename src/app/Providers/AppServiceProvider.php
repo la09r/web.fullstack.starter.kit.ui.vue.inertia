@@ -64,7 +64,14 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/views/public.blade.php'                       => resource_path('views/public.blade.php'),
         ]);
 
-        unlink(resource_path('js/components/ExampleComponent.vue'));
+        try
+        {
+            unlink(resource_path('js/components/ExampleComponent.vue'));
+        }
+        catch (\Exception | \Error $e)
+        {
+
+        }
 
            $usersCount = \App\Models\User::all()->count();
         if($usersCount == 0)
