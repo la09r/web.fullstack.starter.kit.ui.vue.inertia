@@ -36,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
 
             __DIR__ . '/../../app/Providers/RouteServiceProvider.php'                 => app_path('Providers/RouteServiceProvider.php'),
 
+            __DIR__ . '/../../resources/js/components/Dashboard/Nav.vue'              => resource_path('js/components/Dashboard/Nav.vue'),
+
             __DIR__ . '/../../resources/js/Layouts/CardLayout.vue'                    => resource_path('js/Layouts/CardLayout.vue'),
             __DIR__ . '/../../resources/js/Pages/Error/Index.vue'                     => resource_path('js/Pages/Error/Index.vue'),
             __DIR__ . '/../../resources/js/Pages/Public/Index.vue'                    => resource_path('js/Pages/Public/Index.vue'),
@@ -61,6 +63,8 @@ class AppServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/views/error.blade.php'                        => resource_path('views/error.blade.php'),
             __DIR__ . '/../../resources/views/public.blade.php'                       => resource_path('views/public.blade.php'),
         ]);
+
+        unlink(resource_path('js/components/ExampleComponent.vue'));
 
            $usersCount = \App\Models\User::all()->count();
         if($usersCount == 0)
