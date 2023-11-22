@@ -4,7 +4,7 @@
 
 1. **Homestead** virtual machine:
   - installed and configured for cli: PHP v. 8.1, Composer, Git
-1. **Host** machine:
+2. **Host** machine:
   - installed and configured for cli: Node(JavaScript runtime environment) v. 18
 
 ## Install
@@ -28,22 +28,30 @@
   - copy **homestead.backend..sh** files to `DOCUMENT_ROOT`
   - update **+x** permission for ***.sh** files,
   - exec `homestead.backend.install.sh`
-  - in `app/Http/Kernel.php` add to `protected $middleware array`:
-    ```
+  - in `app/Http/Kernel.php` in `protected $middleware array`:
+    ```php
+    // add:
     \LA09R\StarterKit\UI\Vue\Inertia\App\Http\Middleware\HandleInertiaRequests::class,
     ```
-    in `config/app.php` add to `providers`:
-    ```
+  - in `config/app.php` in `providers`:
+    ```php
+    // add:
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class,
     ```
-    in `config/app.php` add to `aliases`:
-    ```
+  - in `config/app.php` in `aliases`:
+    ```php
+    // add:
     App\Providers\RouteServiceProvider::class => LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class
     ```
-  - `php artisan tinker`
-  - `User::factory()->create()`, save: **login** = `email` field from tinker output, **password** = `password`
+  - in bash:
+    ```bash
+    php artisan tinker
+    ```
+    ```php
+    User::factory()->create() // save: **login** = `email` field from tinker output, **password** = `password`
+    ```
 
-1. on **Host** machine:
+2. in **Host** machine:
   - copy **host.frontend..sh** files to `DOCUMENT_ROOT`
   - update **+x** permission for ***.sh** files,
   - replace `#!/bin/zsh` from **host.frontend..sh** files to you **bash** bin path
