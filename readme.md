@@ -36,6 +36,7 @@
   - in `config/app.php` in `providers`:
     ```php
     // add:
+    LA09R\StarterKit\UI\Vue\Inertia\App\Providers\AppServiceProvider::class,
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class,
     ```
   - in `config/app.php` in `aliases`:
@@ -43,12 +44,19 @@
     // add:
     App\Providers\RouteServiceProvider::class => LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class
     ```
+  - create empty `.env.php` and add it to `.gitignore`
+  - add in `composer.json` in `autoload`:
+    ```json
+    "files": [
+        ".env.php"
+    ]
+    ```
   - in bash:
     ```bash
     php artisan tinker
     ```
     ```php
-    User::factory()->create() // save: **login** = `email` field from tinker output, **password** = `password`
+    User::factory()->create() // save: login = `email` field from tinker output, password = `password`
     ```
 
 2. in **Host** machine:

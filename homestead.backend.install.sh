@@ -27,13 +27,14 @@ git add . && git commit -m 'init inertia & ziggy'
 
 php artisan migrate
 
-composer require la09r/web-fullstack-starter-kit-ui-vue-inertia:10.0.7
+composer require la09r/web-fullstack-starter-kit-ui-vue-inertia:10.0.8
 
-php artisan vendor:publish --provider="LA09R\StarterKit\UI\Vue\Inertia\App\Providers\AppServiceProvider" --force
+cp -R ./vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/app/Console/Commands ./app/Console
+
+php artisan app:publish-skluvi
+
+rm -rf ./app/Console/Commands/PublishSkluvi.php
 
 git add . && git commit -m 'publish package'
 
-# php artisan tinker
-# User::factory()->create()
-# login = email field from tinker output, password = password
 

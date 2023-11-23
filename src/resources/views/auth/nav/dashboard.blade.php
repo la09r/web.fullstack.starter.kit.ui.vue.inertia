@@ -19,7 +19,10 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">
+                                @iconSvg('node_modules/primeicons/raw-svg', 'arrow-circle-right', 'icon-svg-size-24')
+                                {{ __('Login') }}
+                            </a>
                         </li>
                     @endif
                 @else
