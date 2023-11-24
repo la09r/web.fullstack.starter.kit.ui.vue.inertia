@@ -8,33 +8,20 @@ class PublishSkluvi extends PublishFiles
 {
     private const PATH_FROM = 'vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src';
     
-    private const FILES = [
-       'resources/js/components/Dashboard/Nav.vue'              => ('js/components/Dashboard/Nav.vue'),
+    private const FILES_REMOVE = [
+        'js/components/ExampleComponent.vue',
+    ];
 
-       'resources/js/Layouts/CardLayout.vue'                    => ('js/Layouts/CardLayout.vue'),
-       'resources/js/Pages/Error/Index.vue'                     => ('js/Pages/Error/Index.vue'),
-       'resources/js/Pages/Public/Index.vue'                    => ('js/Pages/Public/Index.vue'),
-       'resources/js/Pages/Dashboard/Index.vue'                 => ('js/Pages/Dashboard/Index.vue'),
+    private const FILES_COPY = [
+       'resources/js/app.js.php'                    => 'js/app.js',
+       'resources/js/packages.js.php'               => 'js/packages.js',
+       'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
 
-       'resources/js/app.js.php'                                => ('js/app.js'),
-       'vite.config.js.php'                                     => ('vite.config.js'),
+       'resources/js/ComponentsAsync/Dashboard/Widget/MainInfo.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainInfo.vue',
+       'resources/js/ComponentsAsync/Dashboard/Widget/MainStat.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainStat.vue',
 
-       'resources/views/auth/nav/dashboard.blade.php'           => ('views/auth/nav/dashboard.blade.php'),
-       'resources/views/auth/nav/public.blade.php'              => ('views/auth/nav/public.blade.php'),
-       'resources/views/auth/passwords/confirm.blade.php'       => ('views/auth/passwords/confirm.blade.php'),
-       'resources/views/auth/passwords/email.blade.php'         => ('views/auth/passwords/email.blade.php'),
-       'resources/views/auth/passwords/reset.blade.php'         => ('views/auth/passwords/reset.blade.php'),
-       'resources/views/auth/login.blade.php'                   => ('views/auth/login.blade.php'),
-       'resources/views/auth/register.blade.php'                => ('views/auth/register.blade.php'),
-       'resources/views/auth/verify.blade.php'                  => ('views/auth/verify.blade.php'),
-       'resources/views/layouts/auth.blade.php'                 => ('views/layouts/auth.blade.php'),
-       'resources/views/layouts/dashboard.blade.php'            => ('views/layouts/dashboard.blade.php'),
-       'resources/views/layouts/error.blade.php'                => ('views/layouts/error.blade.php'),
-       'resources/views/layouts/public.blade.php'               => ('views/layouts/public.blade.php'),
-       'resources/views/auth.blade.php'                         => ('views/auth.blade.php'),
-       'resources/views/dashboard.blade.php'                    => ('views/dashboard.blade.php'),
-       'resources/views/error.blade.php'                        => ('views/error.blade.php'),
-       'resources/views/public.blade.php'                       => ('views/public.blade.php'),
+       'vite.config.js.php'      => 'vite.config.js',
+       '.env.php'                => '.env.php',
     ];
     
     protected $signature   = 'app:publish-skluvi';
@@ -42,22 +29,33 @@ class PublishSkluvi extends PublishFiles
 
     public function handle()
     {
+        foreach (self::FILES_REMOVE as $file)
+        {
+            try
+            {
+                File::delete(resource_path($file));
+            }
+            catch (\Exception | \Error $e)
+            {
+
+            }
+        }
+
         try
         {
-            File::delete(resource_path('js/components/ExampleComponent.vue'));
-
-            File::delete(resource_path('views/layouts/app.blade.php'));
-            File::delete(resource_path('views/welcome.blade.php'));
-            File::delete(resource_path('views/home.blade.php'));
+            File::deleteDirectory(resource_path('views'));
+            File::deleteDirectory(resource_path('js/components'));
         }
         catch (\Exception | \Error $e)
         {
 
         }
 
-        file_put_contents(base_path('resources/sass/app.scss'), PHP_EOL . '.icon-svg-size-24 { width: 24px; }', FILE_APPEND);
+        $code = file_get_contents(base_path(self::PATH_FROM . '/resources/sass/app.scss'));
+                file_put_contents(base_path('resources/sass/app.scss'), PHP_EOL . PHP_EOL . $code, FILE_APPEND);
+                file_put_contents(base_path('.gitignore'), PHP_EOL . PHP_EOL . '.env.php', FILE_APPEND);
 
-        $this->publishFiles(self::FILES, self::PATH_FROM);
+        $this->publishFiles(self::FILES_COPY, self::PATH_FROM);
         $this->publishUsers();
 
         print PHP_EOL . $this->description . PHP_EOL;

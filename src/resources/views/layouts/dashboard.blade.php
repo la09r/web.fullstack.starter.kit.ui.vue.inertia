@@ -16,7 +16,7 @@
 </head>
 <body>
 <div>
-    @include('auth.nav.dashboard', ['title' => __('Public'), 'link' => route('route.public') ]);
+
 </div>
     @inertia
 </body>

@@ -2,7 +2,9 @@
 
 namespace LA09R\StarterKit\UI\Vue\Inertia\App\Http\Middleware;
 
+use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -17,7 +19,7 @@ class HandleInertiaRequests extends Middleware
 
     public function rootView(Request $request)
     {
-        return strpos($request->getPathInfo(), 'dashboard') !== false ? 'dashboard' : 'public';
+        return strpos($request->getPathInfo(), $this->rootView) !== false ? $this->rootView : 'public';
     }
 
     /**
@@ -41,8 +43,29 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        // updated code
         return array_merge(parent::share($request), [
-            //
+            'user' => function () use ($request) {
+                try
+                {
+                    $tokenBearer = $request->session()->get('auth.token_bearer');
+                    $tokenCsrf   = $request->session()->get('_token');
+                }
+                catch (\Exception | \Error $e)
+                {
+                    $tokenBearer = '';
+                    $tokenCsrf   = '';
+                }
+
+                return [
+                    'auth'  => Auth::check(),
+                    'token' => [
+                        LoginController::SANCTUM_BEARER_TOKEN_KEY => $tokenBearer, // bearer token already exist in <div id="app" data-page="
+                        'csrf' => $tokenCsrf,
+                    ],
+                ];
+            },
         ]);
+        // updated code
     }
 }

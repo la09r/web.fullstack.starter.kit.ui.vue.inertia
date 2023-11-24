@@ -27,7 +27,7 @@ git add . && git commit -m 'init inertia & ziggy'
 
 php artisan migrate
 
-composer require la09r/web-fullstack-starter-kit-ui-vue-inertia:10.0.8
+composer require la09r/web-fullstack-starter-kit-ui-vue-inertia:10.1.0
 
 cp -R ./vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/app/Console/Commands ./app/Console
 

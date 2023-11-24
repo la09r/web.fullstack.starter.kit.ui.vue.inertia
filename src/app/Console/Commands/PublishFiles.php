@@ -37,6 +37,8 @@ class PublishFiles extends Command
             switch ($fileToData[0])
             {
                 case 'js':
+                case 'php':
+                case 'sass':
                 case 'views':
                     $fileTo = resource_path($fileTo);
                     break;
@@ -49,7 +51,7 @@ class PublishFiles extends Command
 
             if(!File::exists($fileDirectoryInfo['dirname']))
             {
-                File::makeDirectory($fileDirectoryInfo['dirname'], false, true);
+                File::makeDirectory($fileDirectoryInfo['dirname'], 755, true);
             }
 
             File::copy($fileFrom , $fileTo);

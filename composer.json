@@ -21,7 +21,8 @@
         "psr-4": {
             "LA09R\\StarterKit\\UI\\Vue\\Inertia\\App\\": "src/app/",
             "LA09R\\StarterKit\\UI\\Vue\\Inertia\\App\\Providers\\": "src/app/Providers",
-            "LA09R\\StarterKit\\UI\\Vue\\Inertia\\App\\Http\\Controllers\\": "src/app/Http/Controllers"
+            "LA09R\\StarterKit\\UI\\Vue\\Inertia\\App\\Http\\Controllers\\": "src/app/Http/Controllers",
+            "LA09R\\StarterKit\\UI\\Vue\\Inertia\\App\\Console\\Builders\\": "src/app/Console/Builders"
         },
         "files": [
 

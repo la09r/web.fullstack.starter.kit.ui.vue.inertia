@@ -14,7 +14,7 @@
 </head>
 <body>
     <div>
-        @include('auth.nav.public', ['title' => __('Public'), 'link' => route('route.public') ]);
+        <div id="app-nav"></div>
         <main>
             @yield('content')
         </main>

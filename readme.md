@@ -1,5 +1,7 @@
 # Manual
 
+This is main package. All npm packages for UI install here.
+
 ## Requirements
 
 1. **Homestead** virtual machine:
@@ -28,10 +30,11 @@
   - copy **homestead.backend..sh** files to `DOCUMENT_ROOT`
   - update **+x** permission for ***.sh** files,
   - exec `homestead.backend.install.sh`
-  - in `app/Http/Kernel.php` in `protected $middleware array`:
+  - in `config/app.php` in `aliases`:
     ```php
     // add:
-    \LA09R\StarterKit\UI\Vue\Inertia\App\Http\Middleware\HandleInertiaRequests::class,
+    App\Http\Controllers\Auth\LoginController::class => LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\Auth\LoginController::class,
+    App\Providers\RouteServiceProvider::class        => LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class
     ```
   - in `config/app.php` in `providers`:
     ```php
@@ -39,12 +42,19 @@
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\AppServiceProvider::class,
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class,
     ```
-  - in `config/app.php` in `aliases`:
+  - in `app/Http/Kernel.php` in `protected $middleware array`:
     ```php
     // add:
-    App\Providers\RouteServiceProvider::class => LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class
+    \LA09R\StarterKit\UI\Vue\Inertia\App\Http\Middleware\HandleInertiaRequests::class,
     ```
-  - create empty `.env.php` and add it to `.gitignore`
+  - in `app/Http/Kernel.php`uncomment
+    ```php
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    ```
+  - in `config/view.php` in `paths` delete all and:
+    ```php
+    base_path('vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/resources/views'),
+    ```
   - add in `composer.json` in `autoload`:
     ```json
     "files": [

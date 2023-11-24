@@ -24,6 +24,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/routes/api.php'));
+
         $this->routes(function () {
             Route::middleware('web')
                 ->group(base_path('vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/routes/web.php'));

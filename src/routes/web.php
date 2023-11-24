@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Auth::routes([
     'register'  => false,
     'reset'     => false,
@@ -18,4 +20,4 @@ Auth::routes([
     'verify'    => false,
 ]);
 
-LA09R\StarterKit\UI\Vue\Inertia\App\Router::routes();
+LA09R\StarterKit\UI\Vue\Inertia\App\Router::webRoutes();

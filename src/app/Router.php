@@ -3,21 +3,26 @@
 namespace LA09R\StarterKit\UI\Vue\Inertia\App;
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\Auth\LoginController;
 use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\PublicController;
 use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\DashboardController;
+use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\NavController;
 
 class Router
 {
-    public static function routes()
+    public static function apiRoutes()
     {
-        Route::get('/', [ PublicController::class, 'index' ])
-            ->name('route.public');
+        Route::post('/backend/nav/logout', [ LoginController::class, 'logout' ])->name('api.route.nav.logout');
+        Route::get('/backend/nav/select', [ NavController::class, 'apiSelect' ])->name('api.route.nav.select');
+    }
 
-        Route::get('/dashboard', [ DashboardController::class, 'index' ])->middleware('auth')
-            ->name('route.dashboard');
+    public static function webRoutes()
+    {
+        Route::get('/', [ PublicController::class, 'index' ])->name('route.public');
 
-        Route::get('/dashboard/welcome', [ DashboardController::class, 'welcome' ])->middleware('auth')
-            ->name('route.dashboard.welcome');
+        Route::middleware(['auth'])->group(function () {
+            Route::get('/dashboard', [ DashboardController::class, 'index' ])->name('route.dashboard');
+            Route::get('/dashboard/welcome', [ DashboardController::class, 'welcome' ])->name('route.dashboard.welcome');
+        });
     }
 }
