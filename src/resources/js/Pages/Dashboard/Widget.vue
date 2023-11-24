@@ -15,7 +15,7 @@ export default {
     },
     computed: {
         comp () {
-            return defineAsyncComponent(() => import(`../../../../../../../resources/js/ComponentsAsync/Dashboard/Widget/${this.componentName}.vue`))
+            return defineAsyncComponent(() => import(`../../../../../../../../resources/js/ComponentsAsync/Dashboard/Widget/${this.componentName}.vue`))
         }
     }
 }
