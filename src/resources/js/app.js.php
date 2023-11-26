@@ -14,8 +14,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'
 import 'primeicons/primeicons.css'
 
-import Nav from '$/vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/resources/js/Components/Dashboard/Nav.vue';
-
+import Nav from '@/Components/Dashboard/Nav.vue';
 
 function getPackageData(name)
 {
@@ -29,7 +28,7 @@ function getPackageData(name)
     {
         if(packages[packageName].pages.match.indexOf(name) !== -1)
         {
-            DATA = packages[packageName].pages.resolve;
+            DATA = packages[packageName].pages.resolve();
             break;
         }
         else
@@ -63,12 +62,10 @@ if(document.querySelector('#app'))
                 page: {
                     visibleModalAdd: false,
                 },
-                component: {
-                    'User_List_Index_DataTable': {
-                        key: 0
-                    }
+                Components: {
+
                 },
-                asyncComponents: {
+                ComponentsAsync: {
 
                 }
             }
@@ -80,8 +77,8 @@ if(document.querySelector('#app'))
             toggleVisibleModalAdd (state) {
                 state.page.visibleModalAdd = !state.page.visibleModalAdd;
             },
-            setAsyncComponents (state, components) {
-                state.asyncComponents = components;
+            setComponentsAsync (state, components) {
+                state.ComponentsAsync = components;
             },
             forceRerender (name) {
                 state.component[name].key += 1;
@@ -91,7 +88,7 @@ if(document.querySelector('#app'))
 
     const mainApp = createInertiaApp({
         resolve(name) {
-            const DATA = getPackageData(name, AsyncComponents);
+            const DATA = getPackageData(name);
 
             return resolvePageComponent(DATA.path, DATA.pathImport);
         },
@@ -107,14 +104,13 @@ if(document.querySelector('#app'))
         },
     });
 
-    let AsyncComponents = {};
-
+    let ComponentsAsync = {};
     for (const packageName in packages)
     {
-        AsyncComponents[packageName] = packages[packageName].asyncComponents;
+        ComponentsAsync[packageName] = packages[packageName].ComponentsAsync;
     }
 
-    store.commit('setAsyncComponents', AsyncComponents);
+    store.commit('setComponentsAsync', ComponentsAsync);
 }
 
 import { computed } from 'vue'

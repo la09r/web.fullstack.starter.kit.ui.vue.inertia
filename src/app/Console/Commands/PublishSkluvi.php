@@ -13,15 +13,20 @@ class PublishSkluvi extends PublishFiles
     ];
 
     private const FILES_COPY = [
-       'resources/js/app.js.php'                    => 'js/app.js',
-       'resources/js/packages.js.php'               => 'js/packages.js',
-       'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
+        'resources/js/app.js.php'                    => 'js/app.js',
+        'resources/js/packages.js.php'               => 'js/packages.js',
+        'resources/js/constant.js.php'               => 'js/constant.js',
+        
+        'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
 
-       'resources/js/ComponentsAsync/Dashboard/Widget/MainInfo.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainInfo.vue',
-       'resources/js/ComponentsAsync/Dashboard/Widget/MainStat.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainStat.vue',
+        'resources/js/Components/Dashboard/Nav.vue'  => 'js/Components/Dashboard/Nav.vue',
+        
+        'resources/js/ComponentsAsync/Dashboard/Widget/MainInfo.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainInfo.vue',
+        'resources/js/ComponentsAsync/Dashboard/Widget/MainStat.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainStat.vue',
 
-       'vite.config.js.php'      => 'vite.config.js',
-       '.env.php'                => '.env.php',
+        '.env.php'                           => '.env.php',
+        'vite.config.js.php'                 => 'vite.config.js',
+        'vite.copy.componentsAsync.js.php'   => 'vite.copy.componentsAsync.js',
     ];
     
     protected $signature   = 'app:publish-skluvi';

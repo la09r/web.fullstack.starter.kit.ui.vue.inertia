@@ -4,18 +4,19 @@
 
 <script>
 import {defineAsyncComponent} from "vue";
+import {loadModule} from "@/app.js";
 
 export default {
     name: "Dynamic Dashboard Widget Component",
     props: {
-        componentName: {
+        widgetName: {
             type: String,
             required: true
-        }
+        },
     },
     computed: {
         comp () {
-            return defineAsyncComponent(() => import(`../../../../../../../../resources/js/ComponentsAsync/Dashboard/Widget/${this.componentName}.vue`))
+            return defineAsyncComponent(() => import(`../../../../../../../../resources/js/ComponentsAsync/Dashboard/Widget/${this.widgetName}.vue`));
         }
     }
 }

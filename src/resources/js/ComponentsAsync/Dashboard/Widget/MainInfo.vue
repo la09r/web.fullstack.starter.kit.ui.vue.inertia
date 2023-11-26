@@ -1,5 +1,5 @@
 <template>
-    Widget Main
+    Widget 1: Main
 </template>
 
 <script>
