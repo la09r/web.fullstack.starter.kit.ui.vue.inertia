@@ -75,5 +75,6 @@ This is main package. All npm packages for UI install here.
   - replace `#!/bin/zsh` from **host.frontend..sh** files to you **bash** bin path
   - exec `host.frontend.install.sh` on **Host** machine
   - in `package.json` set `vite build --watch` for `script.dev` section
+  - in `package.json` set `node ./vite.copy.componentsAsync.js` for `script.copy` section
   - in `vite.config.js` set `Your_Homestead_IP ` for `defineConfig.server.host` section
   - `npm run dev` and checkout browser `APP_URL `
