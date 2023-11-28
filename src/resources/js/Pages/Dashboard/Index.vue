@@ -4,7 +4,7 @@
     Render widgets <Link class="link-primary" :href="route('route.dashboard.welcome')">Welcome</Link>
       <hr>
       <div>
-          <Widget v-for="widget in $store.state.ComponentsAsync.main['Dashboard/Widget'].data"
+          <Widget v-for="widget in $store.state.main.ComponentsAsync['Dashboard/Widget']"
                   :widget-name="widget.path"
                   />
       </div>

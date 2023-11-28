@@ -13,14 +13,17 @@ class PublishSkluvi extends PublishFiles
     ];
 
     private const FILES_COPY = [
-        'resources/js/app.js.php'                    => 'js/app.js',
-        'resources/js/packages.js.php'               => 'js/packages.js',
-        'resources/js/constant.js.php'               => 'js/constant.js',
+        'resources/js/app.js'                    => 'js/app.js',
+        'resources/js/packages.js'               => 'js/packages.js',
+        'resources/js/constant.js'               => 'js/constant.js',
         
         'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
 
         'resources/js/Components/Dashboard/Nav.vue'  => 'js/Components/Dashboard/Nav.vue',
-        
+
+        'resources/js/Layouts/CardLayout.vue'        => 'js/Layouts/CardLayout.vue',
+        'resources/js/Layouts/CardLayoutFluid.vue'   => 'js/Layouts/CardLayoutFluid.vue',
+
         'resources/js/ComponentsAsync/Dashboard/Widget/MainInfo.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainInfo.vue',
         'resources/js/ComponentsAsync/Dashboard/Widget/MainStat.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainStat.vue',
 
@@ -61,6 +64,8 @@ class PublishSkluvi extends PublishFiles
                 file_put_contents(base_path('.gitignore'), PHP_EOL . '.env.php', FILE_APPEND);
                 file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/ComponentsAsync', FILE_APPEND);
                 file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Components', FILE_APPEND);
+                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Layouts', FILE_APPEND);
+                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/php', FILE_APPEND);
 
         $this->publishFiles(self::FILES_COPY, self::PATH_FROM);
         $this->publishUsers();

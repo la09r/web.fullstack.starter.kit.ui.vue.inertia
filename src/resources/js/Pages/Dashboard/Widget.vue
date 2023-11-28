@@ -4,7 +4,6 @@
 
 <script>
 import {defineAsyncComponent} from "vue";
-import {loadModule} from "@/app.js";
 
 export default {
     name: "Dynamic Dashboard Widget Component",

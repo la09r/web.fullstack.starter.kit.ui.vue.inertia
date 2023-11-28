@@ -38,6 +38,8 @@ This is main package. All npm packages for UI install here.
     ```
   - in `config/app.php` in `providers`:
     ```php
+    // comment:
+    App\Providers\RouteServiceProvider::class,
     // add:
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\AppServiceProvider::class,
     LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider::class,

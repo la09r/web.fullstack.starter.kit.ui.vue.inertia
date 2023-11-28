@@ -54,36 +54,38 @@ if(document.querySelector('#app-nav'))
 }
 if(document.querySelector('#app'))
 {
+    function getPackagesStore()
+    {
+        let result = {
+            state: {
+
+            },
+            mutations: {
+
+            }
+        };
+
+        for (const packageName in packages)
+        {
+            const packageStore        = packages[packageName].store;
+            result.state[packageName] = packageStore.state;
+
+            for (const packageMutationName in packageStore.mutations)
+            {
+                result.mutations[packageMutationName] = packageStore.mutations[packageMutationName];
+            }
+        }
+
+        return result;
+    }
+    const packagesStore = getPackagesStore();
+
     // Create a new store instance.
     const store = createStore({
         state () {
-            return {
-                count: 0,
-                page: {
-                    visibleModalAdd: false,
-                },
-                Components: {
-
-                },
-                ComponentsAsync: {
-
-                }
-            }
+            return packagesStore.state;
         },
-        mutations: {
-            increment (state) {
-                state.count++
-            },
-            toggleVisibleModalAdd (state) {
-                state.page.visibleModalAdd = !state.page.visibleModalAdd;
-            },
-            setComponentsAsync (state, components) {
-                state.ComponentsAsync = components;
-            },
-            forceRerender (name) {
-                state.component[name].key += 1;
-            }
-        }
+        mutations: packagesStore.mutations
     });
 
     const mainApp = createInertiaApp({
@@ -107,10 +109,21 @@ if(document.querySelector('#app'))
     let ComponentsAsync = {};
     for (const packageName in packages)
     {
-        ComponentsAsync[packageName] = packages[packageName].ComponentsAsync;
+        for (const componentAsyncKey in packages[packageName].ComponentsAsync)
+        {
+            if(!ComponentsAsync.hasOwnProperty(componentAsyncKey))
+            {
+                ComponentsAsync[componentAsyncKey] = [];
+            }
+
+            for (const componentAsyncData of packages[packageName].ComponentsAsync[componentAsyncKey].data)
+            {
+                ComponentsAsync[componentAsyncKey].push( componentAsyncData );
+            }
+        }
     }
 
-    store.commit('setComponentsAsync', ComponentsAsync);
+    store.commit('mainSetComponentsAsync', ComponentsAsync);
 }
 
 import { computed } from 'vue'

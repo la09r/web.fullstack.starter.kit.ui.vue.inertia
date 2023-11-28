@@ -58,7 +58,8 @@ class HandleInertiaRequests extends Middleware
                 }
 
                 return [
-                    'auth'  => Auth::check(),
+                    'user_id' => Auth::user()->id ?? 0,
+                    'auth'    => Auth::check(),
                     'token' => [
                         LoginController::SANCTUM_BEARER_TOKEN_KEY => $tokenBearer, // bearer token already exist in <div id="app" data-page="
                         'csrf' => $tokenCsrf,

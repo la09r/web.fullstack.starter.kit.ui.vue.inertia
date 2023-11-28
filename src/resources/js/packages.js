@@ -1,6 +1,20 @@
+// package mutation must have unique name in this file
+
 export default {
     main: {
         name: "Main",
+        store: {
+            state: {
+                ComponentsAsync: {
+
+                }
+            },
+            mutations: {
+                mainSetComponentsAsync: function(state, components) {
+                    state.main.ComponentsAsync = components;
+                },
+            }
+        },
         pages: {
             match: ['Dashboard/Index', 'Public/Index', 'Error/Index', 'Welcome/Index'],
             resolve: function () {
@@ -13,7 +27,10 @@ export default {
         Components: {
             'Dashboard': {
                 basePath: 'resources/js/Components/Dashboard',
-            }
+            },
+            'Layouts': {
+                basePath: 'resources/js/Layouts',
+            },
         },
         ComponentsAsync: {
             'Dashboard/Widget': {
