@@ -17,7 +17,7 @@ import { ref } from "vue";
 import {setLocalStorageKey, getLocalStorageKey, delLocalStorageKey} from "@/function.js";
 
 const selectedItem = ref();
-let items = ref(getLocalStorageKey('store_state_dashboard_widget'));
+let items = ref(getLocalStorageKey('store_state_dashboard_widget') ?? []);
 
 import {useStore} from 'vuex';
 const store = useStore();
@@ -26,7 +26,7 @@ function addWidget(path)
 {
     // delLocalStorageKey()
     let state           = store.state.main.ComponentsAsync['Dashboard/Widget'];
-    let widgetsDeleted  = getLocalStorageKey('store_state_dashboard_widget');
+    let widgetsDeleted  = getLocalStorageKey('store_state_dashboard_widget') ?? [];
 
     let stateNew = [ ...state ];
 
@@ -42,7 +42,7 @@ function addWidget(path)
     setLocalStorageKey('store_state_dashboard_widget', widgetsDeleted);
 
     store.commit('mainSetComponentsAsyncByKey', { key: 'Dashboard/Widget', value: stateNew });
-    items = ref(getLocalStorageKey('store_state_dashboard_widget'));
+    items = ref(getLocalStorageKey('store_state_dashboard_widget') ?? []);
 }
 </script>
 

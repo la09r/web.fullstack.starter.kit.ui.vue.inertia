@@ -81,7 +81,7 @@
           getWidgets()
           {
               let state = this.$store.state.main.ComponentsAsync['Dashboard/Widget'];
-              let widgetsDeleted = getLocalStorageKey('store_state_dashboard_widget');
+              let widgetsDeleted = getLocalStorageKey('store_state_dashboard_widget') ?? [];
 
 
               for(let i = 0; i < state.length; i++)
