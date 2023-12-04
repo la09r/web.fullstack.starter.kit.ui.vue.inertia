@@ -2,6 +2,8 @@
 
 namespace LA09R\StarterKit\UI\Vue\Inertia\App\Console\Builders;
 
+use Illuminate\Support\Facades\Gate;
+
 class DashboardMenuBuilder
 {
     public static function build()

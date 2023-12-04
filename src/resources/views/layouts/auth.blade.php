@@ -18,6 +18,7 @@
         <main>
             @yield('content')
         </main>
+        <div id="app-auth-services"></div>
     </div>
 </body>
 </html>

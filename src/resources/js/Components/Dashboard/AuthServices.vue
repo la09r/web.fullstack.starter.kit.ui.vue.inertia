@@ -1,10 +1,10 @@
 <template>
-    Widget Stat
+
 </template>
 
 <script>
 export default {
-    name: "Widget Stat"
+    name: "AuthServices"
 }
 </script>
 

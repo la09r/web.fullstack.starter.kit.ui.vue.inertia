@@ -1,4 +1,5 @@
 .icon-svg-size-24 { width: 24px; }
+.icon-svg-size-32 { width: 32px; }
 
 .p-component {
   font-size: 14px;
@@ -11,10 +12,34 @@
   border-bottom-right-radius: 50% !important;
   border-bottom-left-radius: 50% !important;
   height: 32px !important;
+
+  &.small {
+    height: 22px !important;
+    width:  22px !important;
+    padding: 12px;
+
+    .p-button-icon {
+      font-size: 0.75rem;
+    }
+  }
+  &.smaller {
+    height: 16px !important;
+    width:  16px !important;
+    padding: 10px;
+
+    .p-button-icon {
+      font-size: 0.75rem;
+    }
+  }
 }
 .p-button.p-button-icon-only {
   width: 32px;
   padding: 12px 0;
+
+  &.small {
+    width: 32px;
+    padding: 6px;
+  }
 }
 
 .p-dialog.p-component {
@@ -22,4 +47,41 @@
 }
 .p-dialog .p-dialog-header .p-dialog-title {
   font-size: 16px;
+}
+
+.p-inputtext {
+  font-size: 14px;
+}
+
+.p-dropdown-items-wrapper ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.p-float-label .p-inputwrapper-filled ~ label, .p-float-label .p-inputwrapper-focus ~ label {
+  display: none !important;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.speed-dial-default {
+  ul {
+    position: absolute;
+    right: 33px;
+    top: 0px;
+
+    .p-speeddial-action {
+      text-decoration: none;
+      border-radius: 0;
+      background: white;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.p-listbox-list {
+  padding-left: 0;
 }

@@ -22,7 +22,6 @@ class Router
 
         Route::middleware(['auth'])->group(function () {
             Route::get('/dashboard', [ DashboardController::class, 'index' ])->name('route.dashboard');
-            Route::get('/dashboard/welcome', [ DashboardController::class, 'welcome' ])->name('route.dashboard.welcome');
         });
     }
 }

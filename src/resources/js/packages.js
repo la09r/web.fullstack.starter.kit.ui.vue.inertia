@@ -5,6 +5,13 @@ export default {
         name: "Main",
         store: {
             state: {
+                Component: {
+                    DashboardWidget: {
+                        btn: {
+                            hide: false,
+                        }
+                    }
+                },
                 ComponentsAsync: {
 
                 }
@@ -13,10 +20,16 @@ export default {
                 mainSetComponentsAsync: function(state, components) {
                     state.main.ComponentsAsync = components;
                 },
+                mainSetComponentsAsyncByKey: function(state, data) {
+                    state.main.ComponentsAsync[data.key] = data.value;
+                },
+                mainDashboardWidgetVisibleBtnDeleteCommit: function (state) {
+                    state.main.Component.DashboardWidget.btn.hide = !state.main.Component.DashboardWidget.btn.hide;
+                }
             }
         },
         pages: {
-            match: ['Dashboard/Index', 'Public/Index', 'Error/Index', 'Welcome/Index'],
+            match: ['Dashboard/Index', 'Public/Index', 'Error/Index'],
             resolve: function () {
                 return {
                     path: `../../vendor/la09r/web-fullstack-starter-kit-ui-vue-inertia/src/resources/js/Pages/%PAGE_NAME%.vue`,
@@ -41,7 +54,7 @@ export default {
                 ]
             }
         }
-    }
+    },
 
     // add packages here
 };

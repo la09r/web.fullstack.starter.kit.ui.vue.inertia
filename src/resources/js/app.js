@@ -10,11 +10,13 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
 import ConfirmationService from 'primevue/confirmationservice';
+import DialogService from 'primevue/dialogservice';
 
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'
 import 'primeicons/primeicons.css'
 
 import Nav from '@/Components/Dashboard/Nav.vue';
+import AuthServices from '@/Components/Dashboard/AuthServices.vue';
 
 function getPackageData(name)
 {
@@ -51,6 +53,14 @@ if(document.querySelector('#app-nav'))
         .use(ToastService)
         .use(ConfirmationService)
         .mount('#app-nav');
+}
+if(document.querySelector('#app-auth-services'))
+{
+    const authServices = createApp(AuthServices)
+        .use(PrimeVue)
+        .use(ToastService)
+        .use(ConfirmationService)
+        .mount('#app-auth-services');
 }
 if(document.querySelector('#app'))
 {
@@ -100,6 +110,7 @@ if(document.querySelector('#app'))
                 .use(plugin)
                 .use(PrimeVue)
                 .use(ToastService)
+                .use(DialogService)
                 .use(ConfirmationService)
                 .use(store)
                 .mount(el)

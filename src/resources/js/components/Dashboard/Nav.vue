@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" :href="data.app.url">{{ data.app.name }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ data.app.support }}">
@@ -59,6 +59,7 @@
     </nav>
     <Toast />
     <ConfirmDialog />
+    <DynamicDialog />
 </template>
 
 <script setup>
@@ -66,6 +67,7 @@
     import { Link } from '@inertiajs/vue3'
     import ConfirmDialog from 'primevue/confirmdialog';
     import Toast from 'primevue/toast';
+    import DynamicDialog from 'primevue/dynamicdialog';
 
     import { useConfirm } from "primevue/useconfirm";
     window.PRIMEVUE_SERVICE_CONFIRM = useConfirm();

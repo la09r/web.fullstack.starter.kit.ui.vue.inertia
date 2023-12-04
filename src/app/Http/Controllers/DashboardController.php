@@ -14,12 +14,4 @@ class DashboardController extends Controller
             'text' => 'Test Dashboard/Index',
         ]);
     }
-
-    public function welcome(Request $request)
-    {
-        return Inertia::render('Welcome/Index', [
-            'app_version' => \Illuminate\Foundation\Application::VERSION,
-            'php_version' => PHP_VERSION,
-        ]);
-    }
 }

@@ -7,7 +7,7 @@
 
 <script setup>
   import { Link } from '@inertiajs/vue3';
-  import CardLayout from "../../Layouts/CardLayout.vue";
+  import CardLayout from "@/Layouts/CardLayout.vue";
 </script>
 <script>
   export default {

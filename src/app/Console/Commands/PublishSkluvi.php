@@ -16,10 +16,12 @@ class PublishSkluvi extends PublishFiles
         'resources/js/app.js'                    => 'js/app.js',
         'resources/js/packages.js'               => 'js/packages.js',
         'resources/js/constant.js'               => 'js/constant.js',
+        'resources/js/function.js'               => 'js/function.js',
         
         'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
 
-        'resources/js/Components/Dashboard/Nav.vue'  => 'js/Components/Dashboard/Nav.vue',
+        'resources/js/Components/Dashboard/AuthServices.vue'  => 'js/Components/Dashboard/AuthServices.vue',
+        'resources/js/Components/Dashboard/Nav.vue'           => 'js/Components/Dashboard/Nav.vue',
 
         'resources/js/Layouts/CardLayout.vue'        => 'js/Layouts/CardLayout.vue',
         'resources/js/Layouts/CardLayoutFluid.vue'   => 'js/Layouts/CardLayoutFluid.vue',
@@ -27,9 +29,9 @@ class PublishSkluvi extends PublishFiles
         'resources/js/ComponentsAsync/Dashboard/Widget/MainInfo.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainInfo.vue',
         'resources/js/ComponentsAsync/Dashboard/Widget/MainStat.vue' => 'js/ComponentsAsync/Dashboard/Widget/MainStat.vue',
 
-        '.env.php'                           => '.env.php',
-        'vite.config.js.php'                 => 'vite.config.js',
-        'vite.copy.componentsAsync.js.php'   => 'vite.copy.componentsAsync.js',
+        '.env.php'                       => '.env.php',
+        'vite.config.js'                 => 'vite.config.js',
+        'vite.copy.componentsAsync.js'   => 'vite.copy.componentsAsync.js',
     ];
     
     protected $signature   = 'app:publish-skluvi';
@@ -65,7 +67,6 @@ class PublishSkluvi extends PublishFiles
                 file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/ComponentsAsync', FILE_APPEND);
                 file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Components', FILE_APPEND);
                 file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Layouts', FILE_APPEND);
-                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/php', FILE_APPEND);
 
         $this->publishFiles(self::FILES_COPY, self::PATH_FROM);
         $this->publishUsers();
