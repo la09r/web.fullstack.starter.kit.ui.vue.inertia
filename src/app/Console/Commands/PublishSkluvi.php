@@ -64,9 +64,6 @@ class PublishSkluvi extends PublishFiles
         $code = file_get_contents(base_path(self::PATH_FROM . '/resources/sass/app.scss'));
                 file_put_contents(base_path('resources/sass/app.scss'), PHP_EOL . PHP_EOL . $code, FILE_APPEND);
                 file_put_contents(base_path('.gitignore'), PHP_EOL . '.env.php', FILE_APPEND);
-                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/ComponentsAsync', FILE_APPEND);
-                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Components', FILE_APPEND);
-                file_put_contents(base_path('.gitignore'), PHP_EOL . 'resources/js/Layouts', FILE_APPEND);
 
         $this->publishFiles(self::FILES_COPY, self::PATH_FROM);
         $this->publishUsers();
