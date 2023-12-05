@@ -20,8 +20,8 @@ class PublishSkluvi extends PublishFiles
         
         'resources/php/menu/Dashboard/main.php'      => 'php/menu/Dashboard/main.php',
 
-        'resources/js/Components/Dashboard/AuthServices.vue'  => 'js/Components/Dashboard/AuthServices.vue',
-        'resources/js/Components/Dashboard/Nav.vue'           => 'js/Components/Dashboard/Nav.vue',
+        'resources/js/ComponentsSync/Dashboard/AuthServices.vue'  => 'js/Components/Dashboard/AuthServices.vue',
+        'resources/js/ComponentsSync/Dashboard/Nav.vue'           => 'js/Components/Dashboard/Nav.vue',
 
         'resources/js/Layouts/CardLayout.vue'        => 'js/Layouts/CardLayout.vue',
         'resources/js/Layouts/CardLayoutFluid.vue'   => 'js/Layouts/CardLayoutFluid.vue',
