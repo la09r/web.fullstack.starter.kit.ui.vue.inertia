@@ -8,20 +8,22 @@ use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\PublicController;
 use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\DashboardController;
 use LA09R\StarterKit\UI\Vue\Inertia\App\Http\Controllers\NavController;
 
+use LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider;
+
 class Router
 {
     public static function apiRoutes()
     {
-        Route::post('/backend/nav/logout', [ LoginController::class, 'logout' ])->name('api.route.nav.logout');
-        Route::get('/backend/nav/select', [ NavController::class, 'apiSelect' ])->name('api.route.nav.select');
+        Route::post(RouteServiceProvider::BACK . '/nav/logout', [ LoginController::class, 'logout' ])->name('main.' . RouteServiceProvider::PREFIX_API . '.logout');
+        Route::get(RouteServiceProvider::BACK . '/nav/select', [ NavController::class, 'apiSelect' ])->name('main.' . RouteServiceProvider::PREFIX_API . '.nav.select');
     }
 
     public static function webRoutes()
     {
-        Route::get('/', [ PublicController::class, 'index' ])->name('route.public');
+        Route::get(RouteServiceProvider::HOME_PUBLIC, [ PublicController::class, 'index' ])->name('main.' . RouteServiceProvider::PREFIX_WEB . '.public');
 
         Route::middleware(['auth'])->group(function () {
-            Route::get('/dashboard', [ DashboardController::class, 'index' ])->name('route.dashboard');
+            Route::get(RouteServiceProvider::HOME, [ DashboardController::class, 'index' ])->name('main.' . RouteServiceProvider::PREFIX_WEB . '.dashboard');
         });
     }
 }

@@ -63,6 +63,14 @@ This is main package. All npm packages for UI install here.
         ".env.php"
     ]
     ```
+  - add in `composer.json`:
+    ```json
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        
+    ]
+    ```
   - in bash:
     ```bash
     php artisan tinker

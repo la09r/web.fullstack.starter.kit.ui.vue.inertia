@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use LA09R\StarterKit\UI\Vue\Inertia\App\Providers\RouteServiceProvider;
+
 class NavController extends Controller
 {
     public function apiSelect(Request $request)
@@ -27,7 +29,7 @@ class NavController extends Controller
         $data = [
             'app' => [
                 'name' => config('app.name', 'Laravel'),
-                'url'  => url('/'),
+                'url'  => url(RouteServiceProvider::HOME_PUBLIC),
                 'support' => __('Toggle navigation'),
                 'token' => [
                     'csrf' => $tokenCsrf
@@ -37,27 +39,27 @@ class NavController extends Controller
             'menu' => [
                 'guest' => [
                     'login' => [
-                        'condition' => Route::has('login') && $routePath !== '/login',
+                        'condition' => $routePath !== RouteServiceProvider::LOGIN,
                         'title' => __('Login'),
                         'link'  => route('login'),
                     ],
                     'public' => [
-                        'condition' => Route::has('login') && $routePath === '/login',
+                        'condition' => $routePath === RouteServiceProvider::LOGIN,
                         'title' => __('Public'),
-                        'link'  => route('route.public'),
+                        'link'  => route('main.' . RouteServiceProvider::PREFIX_WEB . '.public'),
                     ],
                 ],
                 'user' => [
                         'public' => [
                             'condition' => strpos($routePath, 'dashboard'),
                             'title' => __('Public'),
-                            'link'  => route('route.public'),
+                            'link'  => route('main.' . RouteServiceProvider::PREFIX_WEB . '.public'),
                         ],
                     'dashboard' => [
                         'index' => [
-                            'condition' => !strpos($routePath, 'dashboard') || $routePath !== '/dashboard',
+                            'condition' => !strpos($routePath, str_replace('/', '', RouteServiceProvider::HOME)) || $routePath !== RouteServiceProvider::HOME,
                             'title' => __('Dashboard'),
-                            'link'  => route('route.dashboard'),
+                            'link'  => route('main.' . RouteServiceProvider::PREFIX_WEB . '.dashboard'),
                         ],
 
                         'logout' => [
@@ -70,7 +72,7 @@ class NavController extends Controller
                         ],
 
                         'menu' => [
-                            'condition' => strpos($routePath, 'dashboard'),
+                            'condition' => strpos($routePath, str_replace('/', '', RouteServiceProvider::HOME)),
                             'items' => [],
                         ]
                     ],
@@ -85,6 +87,6 @@ class NavController extends Controller
             unset($data['app']['token'], $data['menu']['user']);
         }
 
-        return $request->wantsJson() ? new JsonResponse($data, 200) : redirect('/login');
+        return $request->wantsJson() ? new JsonResponse($data, 200) : redirect(RouteServiceProvider::LOGIN);
     }
 }

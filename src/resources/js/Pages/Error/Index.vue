@@ -1,7 +1,7 @@
 <template>
   <CardLayout title="Error">
     Error {{ text }} <br>
-    <Link :href="route('route.dashboard')">Dashboard</Link>
+    <Link :href="route('main.web.route.dashboard')">Dashboard</Link>
   </CardLayout>
 </template>
 
